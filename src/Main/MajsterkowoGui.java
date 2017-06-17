@@ -77,6 +77,8 @@ public class MajsterkowoGui extends JFrame implements ZmienneStatyczne {
             setListaKlientowSelectionListener();
             setWypozyczButtonActionListener();
             setListaNarzedziSelectionListener();
+            setZwrocButtonActionListener();
+            setListaNarzedziUKlientaSelectionListener();
 
             pack();
             setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -128,10 +130,6 @@ public class MajsterkowoGui extends JFrame implements ZmienneStatyczne {
 
 
             Osoba osoba = Osoba.nowyKlient(imie, nazwisko, pesel, nrTelefonu, adres);
-            if (listaKlientowModel.contains(osoba)) {
-                // TODO: 16.06.2017 usuniecie osoby z ekstensji
-                return;
-            }
             listaKlientowModel.addElement(osoba);
 
         });
@@ -161,11 +159,12 @@ public class MajsterkowoGui extends JFrame implements ZmienneStatyczne {
             listaNarzedziUKlientaModel.removeElement(narzedzie);
 
             try {
+
                 narzedzie.zwroc(klient);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
+            zwrocButton.setEnabled(false);
         });
     }
 
@@ -215,7 +214,11 @@ public class MajsterkowoGui extends JFrame implements ZmienneStatyczne {
             Integer fizycznyNrStanowiska = fizycznyNumerStanowiskaString.equals("") ?
                     null : Integer.valueOf(fizycznyNumerStanowiskaString);
 
-            // TODO: 17.06.2017 czyszczenie
+            nazwaPotocznaTextField.setText("");
+            pelnaNazwaTextField.setText("");
+            dataZakupuTextField.setText("");
+            mocTextField.setText("");
+            fizycznyNrStanowiskaTextField.setText("");
 
 
             SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
@@ -275,6 +278,30 @@ public class MajsterkowoGui extends JFrame implements ZmienneStatyczne {
             wybranyKlientNarzedziaJLabel.setText(nazwaOsoby);
             setWypozyczEnabled();
 
+            updateListaNarzedziUklienta();
+            zwrocButton.setEnabled(false);
+        });
+    }
+
+    private void updateListaNarzedziUklienta(){
+        Osoba klient = listaKlientow.getSelectedValue();
+        listaNarzedziUKlientaModel.removeAllElements();
+        if(klient.czySaPowiazania(NARZEDZIE_U_KLIENTA)){
+            try {
+                ObjectPlusPlus[] narzedzia = klient.dajPowiazania(NARZEDZIE_U_KLIENTA);
+
+                for(ObjectPlusPlus objectPlusPlus: narzedzia){
+                    listaNarzedziUKlientaModel.addElement((Narzedzie) objectPlusPlus);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void setListaNarzedziUKlientaSelectionListener(){
+        listaNarzedziUKlienta.addListSelectionListener(a -> {
+            zwrocButton.setEnabled(true);
         });
     }
 
@@ -306,6 +333,6 @@ public class MajsterkowoGui extends JFrame implements ZmienneStatyczne {
         wypozyczButton.setEnabled(isEnabled);
     }
 
-
+    // TODO: 17.06.2017 Walidacja poprawnosci wprowadzanych danych
 
 }

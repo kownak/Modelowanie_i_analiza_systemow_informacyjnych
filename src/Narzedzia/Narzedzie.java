@@ -87,10 +87,13 @@ public class Narzedzie extends ObjectPlusPlus implements ZmienneStatyczne {
     }
 
     public void zwroc(Osoba osoba) throws Exception {
+
         if (osoba.czySaPowiazania(KLIENCI)){
             throw new Exception("Osoba musi być klientem ");
         }
+
         osoba.usunPowiazanie(NARZEDZIE_U_KLIENTA,KLIENT_POSIADAJACY,this);
+        this.setStatus(DOSTEPNE);
     }
 
 

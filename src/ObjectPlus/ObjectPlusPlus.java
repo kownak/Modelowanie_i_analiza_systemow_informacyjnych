@@ -203,7 +203,7 @@ public class ObjectPlusPlus extends ObjectPlus implements Serializable {
 
         // Sprawdz czy powiazanie juz istnieje?
         // Jezeli tak to zignoruj dodawanie
-        if(!powiazaniaObiektu.containsKey(kwalifikator)) {
+        if(powiazaniaObiektu.containsKey(kwalifikator)) {
             // Dodaj powiazanie dla tego obiektu
             powiazaniaObiektu.remove(kwalifikator, obiektDocelowy);
 
