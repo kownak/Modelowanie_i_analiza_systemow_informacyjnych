@@ -31,9 +31,6 @@ public class Faktura extends ObjectPlusPlus {
         return maksNumerFaktury + 1;
     }
 
-    public void dodajUsluge(Usluga usluga){
-
-    }
 
     public void wystawFakture(){}
 }

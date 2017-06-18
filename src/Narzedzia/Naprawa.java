@@ -17,6 +17,14 @@ public class Naprawa extends ObjectPlusPlus{
 
     }
 
+    public double getKoszt() {
+        return koszt;
+    }
+
+    public void setKoszt(double koszt) {
+        this.koszt = koszt;
+    }
+
     public LocalDate getDataZleceniaNaprawy() {
         return dataZleceniaNaprawy;
     }
@@ -33,11 +41,6 @@ public class Naprawa extends ObjectPlusPlus{
         this.dataZakonczeniaNaprawy = dataZakonczeniaNaprawy;
     }
 
-    public double getKoszt() {
-        return koszt;
-    }
 
-    public void setKoszt(double koszt) {
-        this.koszt = koszt;
-    }
+
 }

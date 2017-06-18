@@ -20,4 +20,7 @@ public interface ZmienneStatyczne {
     String KLIENCI = "klienci";
     String KLIENT_POSIADAJACY = "klientPosiadajacy";
     String NARZEDZIE_U_KLIENTA = "narzedzieUKlienta";
+    String FAKTURA_CZESC = "fakturaCzesc";
+    String FAKTURA_CALOSC = "fakturaCalosc";
+    
 }

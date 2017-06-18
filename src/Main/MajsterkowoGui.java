@@ -122,6 +122,7 @@ public class MajsterkowoGui extends JFrame implements ZmienneStatyczne {
             String pesel = peselTextField.getText();
             String adres = adresTextField.getText();
 
+
             imieTextField.setText("");
             nazwiskoTextField.setText("");
             nrTelefonuTextField.setText("");

@@ -19,4 +19,6 @@ public abstract class Usluga extends ObjectPlusPlus {
     public double getCena() {
         return cena;
     }
+
+
 }
