@@ -1,0 +1,2 @@
+# Modelowanie_i_analiza_systemow_informacyjnych
+Projekt semestralny z MAS
